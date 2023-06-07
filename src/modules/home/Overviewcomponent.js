@@ -19,40 +19,63 @@ display:flex;
 flex-direction: row;
 justify-content: space-between;
 `;
-const AddTransaction = styled.button`
+const AddTransaction = styled.div`
 background : black;
 color : white;
 padding : 3px 8px;
 border-radius : 3px;
+text-align:center;
 cursor:pointer;
 font-weight: bold;
 font-size:15px
+
 `;
 const AddTransactionContainer= styled.div`
 display:flex;
 flex-direction:column;
 border:1px solid #e6e8e9;
-gap : 10px
+gap : 10px;
+width:100%;
 padding : 15px 20px;
 margin : 15px 20px;
+& input{
+    outline: none;
+    padding: 10px 12px;
+    border-radius:4px;
+    border:1px solid #e6e8e9;
+
+}
+`;
+const RadioBox = styled.div`
+display: flex;
+flex-direction: row;
+width: 100%;
+align-items: center;
 `;
 const AddTransactionView = () => {
     return(
         <AddTransactionContainer>
          <input placeholder="Amount"/>
          <input placeholder="Description"/>
+         <RadioBox>
+            <input type="radio" id="expense" name="type" value="EXPENSE"/>
+           <label htmlFor="expense">Expense</label>
+           <input type="radio" id="income" name="type" value="INCOME"></input>
+           <label htmlFor="income">Income</label>
+         </RadioBox>
+         <AddTransaction>Add Transaction</AddTransaction>
         </AddTransactionContainer>
     )
 
 };
 
 const OverviewComponent = (props) => {
-    const [isAddTxnVisible,toggleAddTxn] = useState(true);
+    const [isAddTxnVisible,toggleAddTxn] = useState(false);
     return(
         <Container>
             <BalanceBox>
                 Balance:10000
-                <AddTransaction>{isAddTxnVisible ? "Cancel" : "Add"}</AddTransaction>
+                <AddTransaction onClick={() => toggleAddTxn(!isAddTxnVisible)}>{isAddTxnVisible ? "Cancel" : "Add"}</AddTransaction>
             </BalanceBox>
             {isAddTxnVisible && <AddTransactionView/>}
            
