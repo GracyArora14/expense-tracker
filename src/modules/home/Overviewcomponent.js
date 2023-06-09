@@ -37,7 +37,7 @@ border:1px solid #e6e8e9;
 gap : 10px;
 width:100%;
 padding : 15px 20px;
-margin : 15px 20px;
+margin :  20px;
 & input{
     outline: none;
     padding: 10px 12px;
@@ -53,14 +53,18 @@ width: 100%;
 align-items: center;
 `;
 const AddTransactionView = () => {
+    const [amount,setAmount]=useState();
+    const[desc,setDesc]=useState();
+    const[type,setType]=useState("EXPENSE");
+
     return(
         <AddTransactionContainer>
-         <input placeholder="Amount"/>
-         <input placeholder="Description"/>
+         <input placeholder="Amount" value={amount} onChange={(e) => setAmount(e.target.value)}/>
+         <input placeholder="Description" value={desc} onChange={(e) => setDesc (e.target.value)}/>
          <RadioBox>
-            <input type="radio" id="expense" name="type" value="EXPENSE"/>
+            <input type="radio" id="expense" name="type" value="EXPENSE"  checked={type=="EXPENSE"} onChange={(e)=>setType(e.target.value)}/>
            <label htmlFor="expense">Expense</label>
-           <input type="radio" id="income" name="type" value="INCOME"></input>
+           <input type="radio" id="income" name="type" value="INCOME" checked={type=="INCOME"}  onChange={(e)=>setType(e.target.value)}></input>
            <label htmlFor="income">Income</label>
          </RadioBox>
          <AddTransaction>Add Transaction</AddTransaction>
