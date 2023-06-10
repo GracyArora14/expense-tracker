@@ -52,22 +52,26 @@ flex-direction: row;
 width: 100%;
 align-items: center;
 `;
-const AddTransactionView = () => {
+const AddTransactionView = (props) => {
     const [amount,setAmount]=useState();
     const[desc,setDesc]=useState();
     const[type,setType]=useState("EXPENSE");
+    const addTransaction = ()=>{
+        console.log({amount,desc,type});
+        props.toggleAddTxn();
+    }
 
     return(
         <AddTransactionContainer>
          <input placeholder="Amount" value={amount} onChange={(e) => setAmount(e.target.value)}/>
          <input placeholder="Description" value={desc} onChange={(e) => setDesc (e.target.value)}/>
          <RadioBox>
-            <input type="radio" id="expense" name="type" value="EXPENSE"  checked={type=="EXPENSE"} onChange={(e)=>setType(e.target.value)}/>
+            <input type="radio" id="expense" name="type" value="EXPENSE"  checked={type==="EXPENSE"}/>
            <label htmlFor="expense">Expense</label>
-           <input type="radio" id="income" name="type" value="INCOME" checked={type=="INCOME"}  onChange={(e)=>setType(e.target.value)}></input>
+           <input type="radio" id="income" name="type" value="INCOME" checked={type==="INCOME"}  onChange={(e)=>setType(e.target.value)}></input>
            <label htmlFor="income">Income</label>
          </RadioBox>
-         <AddTransaction>Add Transaction</AddTransaction>
+         <AddTransaction onClick={addTransaction}>Add Transaction</AddTransaction>
         </AddTransactionContainer>
     )
 
@@ -81,7 +85,7 @@ const OverviewComponent = (props) => {
                 Balance:10000
                 <AddTransaction onClick={() => toggleAddTxn(!isAddTxnVisible)}>{isAddTxnVisible ? "Cancel" : "Add"}</AddTransaction>
             </BalanceBox>
-            {isAddTxnVisible && <AddTransactionView/>}
+            {isAddTxnVisible && <AddTransactionView toggleAddTxn ={toggleAddTxn}/>}
            
         </Container>
     )
