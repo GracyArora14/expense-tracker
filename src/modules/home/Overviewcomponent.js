@@ -73,22 +73,54 @@ const AddTransactionView = (props) => {
          </RadioBox>
          <AddTransaction onClick={addTransaction}>Add Transaction</AddTransaction>
         </AddTransactionContainer>
-    )
+    );
 
 };
+const ExpenseContainer = styled.div`
+display:flex;
+flex-direction : row;
+gap:12px;
+margin: 20px;
+`;
+const ExpenseBox = styled.div`
+display:flex;
+flex-direction :column;
+border-radius: 4px;
+border: 1px solid #e6e8e9;
+padding: 15px 20px;
+width:135px;
+font-size:14px;
+& span{
+    font-weight:bold;
+    font-size:20px;
+    color: ${(props) => (props.isIncome ? "green" : "red")};
+}
+
+
+`;
 
 const OverviewComponent = (props) => {
     const [isAddTxnVisible,toggleAddTxn] = useState(false);
     return(
         <Container>
             <BalanceBox>
-                Balance:10000
+                Balance : Rs {props.income - props.expense}
                 <AddTransaction onClick={() => toggleAddTxn(!isAddTxnVisible)}>{isAddTxnVisible ? "Cancel" : "Add"}</AddTransaction>
             </BalanceBox>
             {isAddTxnVisible && (<AddTransactionView toggleAddTxn ={toggleAddTxn} addTransaction={props.addTransaction}/>
             )}
 
             <ExpenseContainer>
+                <ExpenseBox isIncome={false}>
+                    Expense<span>
+                      Rs {props.expense}
+                    </span>
+                </ExpenseBox>
+                <ExpenseBox isIncome={true}>
+                   Income<span>
+                   Rs {props.income}
+                    </span>
+                </ExpenseBox>
 
             </ExpenseContainer>
            
