@@ -10,6 +10,8 @@ margin: 10px;
 font-family: 'EB Garamond', serif;
 font-family: 'Ubuntu', sans-serif;
 width:100%;
+
+
 `;
 const BalanceBox = styled.div`
 font-size:18px;
@@ -18,6 +20,7 @@ font-weight:bold;
 display:flex;
 flex-direction: row;
 justify-content: space-between;
+
 `;
 const AddTransaction = styled.div`
 background : black;
@@ -27,7 +30,8 @@ border-radius : 3px;
 text-align:center;
 cursor:pointer;
 font-weight: bold;
-font-size:15px
+font-size:15px;
+
 
 `;
 const AddTransactionContainer= styled.div`
@@ -38,6 +42,7 @@ gap : 10px;
 width:100%;
 padding : 15px 20px;
 margin :  20px;
+background:rgb(157, 178, 191);
 & input{
     outline: none;
     padding: 10px 12px;
@@ -51,6 +56,7 @@ display: flex;
 flex-direction: row;
 width: 100%;
 align-items: center;
+
 `;
 const AddTransactionView = (props) => {
     const [amount,setAmount]=useState();
@@ -81,6 +87,7 @@ display:flex;
 flex-direction : row;
 gap:12px;
 margin: 20px;
+
 `;
 const ExpenseBox = styled.div`
 display:flex;
@@ -90,6 +97,7 @@ border: 1px solid #e6e8e9;
 padding: 15px 20px;
 width:135px;
 font-size:14px;
+background:rgb(221, 230, 237);
 & span{
     font-weight:bold;
     font-size:20px;

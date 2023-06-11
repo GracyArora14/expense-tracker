@@ -11,6 +11,7 @@ margin: 30px 0 10px;
 font-family: 'EB Garamond', serif;
 font-family: 'Ubuntu', sans-serif;
 width:360px;
+
 `;
 
 

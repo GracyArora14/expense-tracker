@@ -18,7 +18,7 @@ font-family: 'Ubuntu', sans-serif;
     padding: 10px 12px;
     border-radius:12px;
     background:#e6e8e9;
-    outline:none;
+    outline: black solid;
     width:100%;
 }
 `;
@@ -29,8 +29,9 @@ padding: 10px 15px;
 font-size:14px;
 width:100%;
 justify-content: space-between;
-border:1px solid #e6e8e9;
+border:5px solid #e6e8e9;
 border-right:4px solid ${(props) => (props.isExpense ? "red" : "green")};
+background:rgb(244, 211, 211);
 
 `;
 const TransactionCell = (props) => {
